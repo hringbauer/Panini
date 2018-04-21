@@ -14,7 +14,7 @@ if __name__ == '__main__':
     while True:
         i=int(input("\nWhat do you want to do?\n"
               "(1) Load Stickers \n(2) Save Stickers \n(3) Add Stickers"
-              "\n(4) Print Stickers \n(5) Exit\n"))
+              "\n(4) Print Stickers \n(5) Print Doubles \n(8) Reset Stickers \n(9) Exit\n"))
         
         if i==1:
             s.load_stickers()
@@ -29,6 +29,14 @@ if __name__ == '__main__':
             s.print_stickers()
             
         if i==5:
+            s.print_doubles()
+            
+        
+        if i==8:
+            s.reset_stickers()
+            print("WARNING: Stickers deleted!!!")
+            
+        if i==9:
             break
         
     

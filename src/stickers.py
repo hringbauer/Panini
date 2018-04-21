@@ -6,6 +6,7 @@ This is the main class. All the magic happens here
 
 import numpy as np
 import os.path
+import matplotlib.pyplot as plt
 
 class PaniniSticker(object):
     """General Class for Panini Stickers.
@@ -25,9 +26,6 @@ class PaniniSticker(object):
         print("Nr of Stickers: %i" % self.n)
         
         self.load_stickers()
-        k = np.sum(self.stickers>0)
-        print("Stickers loaded. You already have %i out of %i stickers. Wow!" 
-              % (k, len(self.stickers)))
         # Automatically loads resp. generates the Stickers    
         
         
@@ -44,10 +42,15 @@ class PaniniSticker(object):
         if os.path.exists(self.path):
             self.stickers = np.loadtxt(self.path, dtype="int")
             
+            k = np.sum(self.stickers>0)
+            print("Stickers loaded. You already have %i out of %i stickers. Wow!" 
+                  % (k, len(self.stickers)))
+            
         # If no: Create
         else:
-            print("Creating new dataset.")
+            print("Creating new dataset of length %i" % self.n)
             self.stickers = np.zeros(self.n)
+            
             
     def add_stickers(self):
         """"Add Stickers to the album.\n"""
@@ -67,9 +70,35 @@ class PaniniSticker(object):
     def print_stickers(self):
         """"Prints the stickers"""
         print(self.stickers)
-
+        
+        fs=12
+        xs=range(1, self.n+1)
+        plt.figure(figsize=(12,4))
+        plt.plot(xs, self.stickers, "ro")
+        plt.ylabel("Count", fontsize=fs)
+        plt.xlabel("Sticker Number", fontsize=fs)
+        plt.title("Panini Doubles", fontsize=fs)
+        plt.show()
+        
     def save_stickers(self):
         """"Save the stickers"""
         np.savetxt(self.path, self.stickers, fmt='%i')
         print("Stickers saved to %s" % self.path)
+        
+    def reset_stickers(self):
+        """Reset all Stickers to 0"""
+        self.stickers = np.zeros(self.n)
+        
+    def print_doubles(self):
+        """Prints all of my doubles"""  
+        double_inds = np.where(self.stickers>=2)[0]
+        
+        print("Doubles: Total Nr: %i" % len(double_inds))
+        
+        print("Double Indices:")
+        print(double_inds+1)
+        
+    def print_missing(self):
+        """Prints all of my missing"""
+        print("To Do!")
         
