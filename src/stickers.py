@@ -70,6 +70,7 @@ class PaniniSticker(object):
                 break
             
             elif i > 0:
+                print("You already have it %i times." % self.stickers[i-1])
                 self.add_sticker(i) 
             
             elif i < 0:
