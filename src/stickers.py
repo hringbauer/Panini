@@ -70,11 +70,12 @@ class PaniniSticker(object):
                 break
             
             elif i > 0:
-                print("You already have it %i times." % self.stickers[i-1])
+                print("You already have it %i times." % self.stickers[i - 1])
                 self.add_sticker(i) 
             
             elif i < 0:
                 self.remove_sticker(-i)
+                print("Nr of Stickers left %i:" % self.stickers[-i - 1])
             
     def print_stickers(self):
         """"Prints the stickers"""
@@ -125,7 +126,7 @@ class PaniniSticker(object):
             return
         
         for i in ints:
-            print("Sticker %i: %i x" % (i, self.stickers[i-1]))
+            print("Sticker %i: %i x" % (i, self.stickers[i - 1]))
         
     def show_stats(self):
         """Print overall statistics"""
