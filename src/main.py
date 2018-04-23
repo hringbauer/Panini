@@ -15,7 +15,7 @@ if __name__ == '__main__':
         i=int(input("\nWhat do you want to do?\n"
               "(1) Load Stickers \n(2) Save Stickers \n(3) Add Stickers"
               "\n(4) Print Stickers \n(5) Print Doubles \n(6) Print Missing Stickers" 
-              "\n(7) Show Total Stats \n(8) Reset Stickers \n(9) Exit\n"))
+              "\n(7) Show Total Stats \n(8) Reset Stickers \n(9) Overlap \n(0) Exit\n"))
         
         if i==1:
             s.load_stickers()
@@ -43,6 +43,9 @@ if __name__ == '__main__':
             print("WARNING: Stickers deleted!!!")
             
         if i==9:
+            s.print_overlap()
+            
+        if i==0:
             break
         
     

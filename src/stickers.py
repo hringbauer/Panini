@@ -113,6 +113,20 @@ class PaniniSticker(object):
         print("Missing Indices: ")
         print(missing_list + 1)
         
+    def print_overlap(self):
+        """Print overlap with existing list of stickers"""
+        ls = input("Please enter list of space separated values:\n")
+        ints = ls.split()
+        try:
+            ints = np.array(ints).astype("int")
+            
+        except:
+            print("No Integer Values!! Returning to main Menue")
+            return
+        
+        for i in ints:
+            print("Sticker %i: %i x" % (i, self.stickers[i-1]))
+        
     def show_stats(self):
         """Print overall statistics"""
         s = self.stickers
