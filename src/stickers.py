@@ -127,6 +127,12 @@ class PaniniSticker(object):
         
         for i in ints:
             print("Sticker %i: %i x" % (i, self.stickers[i - 1]))
+            
+        m = max(self.stickers[ints - 1])
+        
+        for j in range(m + 1):
+            print("%i times:" % j)
+            print(ints[self.stickers[ints - 1] == j])
         
     def show_stats(self):
         """Print overall statistics"""
@@ -145,3 +151,7 @@ class PaniniSticker(object):
         print("Ratio Glittery: %.4f" % np.mean(ks))
         print("Ratio All: %.4f " % np.mean(k))
         
+        print("Sticker Distribution:")
+        for i in range(np.max(s + 1)):
+            print("%2i x: %i" % (i, np.sum(s == i)))
+            
