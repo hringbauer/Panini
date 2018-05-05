@@ -7,6 +7,7 @@ This is the main class. All the magic happens here
 import numpy as np
 import os.path
 import matplotlib.pyplot as plt
+import re
 
 
 class PaniniSticker(object):
@@ -117,7 +118,9 @@ class PaniniSticker(object):
     def print_overlap(self):
         """Print overlap with existing list of stickers"""
         ls = input("Please enter list of space separated values:\n")
-        ints = ls.split()
+        
+        ls1 = re.sub(r"\W", " ", ls)  # Replace tabs and enters
+        ints = ls1.split()
         try:
             ints = np.array(ints).astype("int")
             
