@@ -101,7 +101,14 @@ class PaniniSticker(object):
         self.stickers = np.zeros(self.n)
         
     def print_doubles(self):
-        """Prints all of my doubles"""  
+        """Prints all of my doubles"""
+        inds = np.arange(1, len(self.stickers)+1)
+        sticker_nr = self.stickers - 1
+        sticker_nr[sticker_nr < 0] = 0
+        
+        double_inds0 = np.repeat(inds, sticker_nr)
+        print(double_inds0)
+          
         double_inds = np.where(self.stickers >= 2)[0]
         
         print("Doubles: Total Nr: %i" % len(double_inds))
